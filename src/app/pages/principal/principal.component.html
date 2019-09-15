@@ -1,0 +1,101 @@
+<div >
+    
+    <app-loading *ngIf="loading">  </app-loading>   
+    
+</div>
+
+<div class="row mt-5 animated fadeIn" *ngIf="!imprimir " >
+  <div class="col-2"></div>
+  <div  class="col-8">
+        <h3 class="text-success-bold" *ngIf="loading">{{estado}}</h3> 
+    <h2  class="text-success-bold mb-5">INGRESE SU DOCUMENTO</h2>
+    <br>
+    <div class="row">
+      <div class="col-6">
+        
+          <input class="col-3 pl-2" type="text" [(ngModel)]="documento" class="form-control form-control-lg  input-size-text">
+      </div>
+        <div class="col-2">
+         <!--  <a  ><i class="fas fa-search fa-3x mt-3 ml-2 icon-color-search"></i></a> -->
+        </div>  
+    </div>
+      
+    <div class="row mt-5" >
+        <div class="col-8">
+            <ul id="keyboard" #myDiv >   
+                <li class="letter" (click)="agregarCaracter('1')">1</li>  
+                <li class="letter" (click)="agregarCaracter('2')">2</li>  
+                <li class="letter" (click)="agregarCaracter('3')">3</li>  
+                <li class="letter clearl" (click)="agregarCaracter('4')">4</li>  
+                <li class="letter" (click)="agregarCaracter('5')">5</li>  
+                <li class="letter" (click)="agregarCaracter('6')">6</li> 
+                <li class="letter clearl" (click)="agregarCaracter('7')">7</li>  
+                <li class="letter" (click)="agregarCaracter('8')">8</li>  
+                <li class="letter" (click)="agregarCaracter('9')">9</li>  
+                <li class="letter clearl" (click)="agregarCaracter('0')">0</li>              
+                 <li class="return" (click)="borrarCaracter()">Borrar</li>
+            </ul>  
+         
+    </div>
+    <div class="col-4">
+        <div class="pl-4" >
+        
+      </div>
+    </div>
+        </div> 
+       
+  </div>
+ 
+  <div class="col-2"></div>
+  
+  </div>
+
+  <div class="row mt-5"  *ngIf="!imprimir ">
+   <div class="col-2">      
+      </div>
+    <div class="col-4">
+      <button (click)="buscarPaciente()" class="btn btn-block btn-success btn-lg  letter"><h2>BUSCAR</h2> </button>
+    </div>
+    
+        <div class="col-6">      
+      </div>
+  </div>
+
+
+  <div class="row mt-5" *ngIf="!imprimir">
+      <div class="col-1"></div>
+      <div class="col-10">
+         
+          <b><h4 class="text-info">LUEGO DE OBTENER SU TICKET, TOME ASIENTO Y SERA ATENDIDO</h4></b>
+      </div>
+      <div class="col-1"></div>
+  </div>
+      <div class="row ancho-impresion" *ngIf="imprimir">
+          
+          <div class="col-12">
+                <h6 class="size-titulo-texto " *ngIf="elementoTurno" >{{elementoTurno.es_observacion}}</h6>
+                <hr class="mt-2">
+                <div class="row">
+                    <div><label *ngIf="elementoPaciente.apellido !==''" class="ancho-texto mt-1 mr-1">{{elementoPaciente.apellido}}  </label></div>
+                    <div><label *ngIf="elementoPaciente.nombre !==''" class="ancho-texto mt-1">{{elementoPaciente.nombre}}</label></div>
+                </div>
+                
+                
+                <label *ngIf="elementoPaciente" class="ancho-texto">D.N.I : {{elementoPaciente.dni}}</label>
+                <label *ngIf="elementoPaciente" class="ancho-texto"></label>
+                <hr class="ancho-texto">
+               <b> <small><label *ngIf="elementoTurno" class="ancho-texto">Su ID de turno es :{{elementoTurno.id}}</label></small></b>
+                <label *ngIf="elementoTurno" class="ancho-texto">{{elementoTurno.nombreyapellido}}</label>
+                <h6 class="size-titulo-texto mt-2">TOME ASIENTO Y SERA LLAMADO</h6>
+                <hr class="mt-3">
+                <small><label *ngIf="elementoPaciente" class="ancho-texto mt-2">{{horario}}</label></small>
+                <br  class="mt-3">
+                
+               
+          </div>
+          
+       
+      </div>
+  
+
+     
